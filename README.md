@@ -75,7 +75,7 @@ This will:
 
 You can modify the following parameters in the `main()` function:
 
-- **Dataset**: Change from Cora to KarateClub or other Planetoid datasets
+- **Dataset**: Change from Cora to KarateClub or other PyTorch Geometric datasets
 - **Number of samples**: Adjust `num_samples` in `TransductiveSubgraphDataset`
 - **Subgraph size**: Modify `min_nodes` and `max_nodes` parameters
 - **Training epochs**: Change the range in the training loop
@@ -212,5 +212,5 @@ This project is available for educational and research purposes.
 ## Acknowledgments
 
 - Built with [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/)
-- Uses the Cora citation network dataset from the Planetoid collection
+- Uses the Cora citation network dataset (Planetoid) and KarateClub datasets
 - Triangle counting implementation using NetworkX
