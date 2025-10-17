@@ -163,7 +163,7 @@ def main():
     
     print("Step 2: Generating and loading the subgraph dataset...")
     # Using a different root to avoid conflict with the previous version
-    dataset = TransductiveSubgraphDataset(root='data/transductive_dataset', original_data=original_data, num_samples=1000)
+    dataset = TransductiveSubgraphDataset(root='data/transductive_dataset', original_data=original_data, num_samples=2000)
     print(f"Dataset created with {len(dataset)} subgraphs.")
     # --- NEW: print distribution of the targets (triangles per vertex) using percentiles ---
     if len(dataset) > 0:
