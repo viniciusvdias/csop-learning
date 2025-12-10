@@ -17,6 +17,68 @@ Triangle counting is a fundamental graph analysis task that identifies closed tr
 - Graph clustering coefficient computation
 - Detecting dense subgraphs
 
+## Graph Learning Concepts for Beginners
+
+If you're new to graph learning and Graph Neural Networks (GNNs), here are the key concepts used in this project:
+
+### Basic Graph Theory
+
+- **Graph**: A mathematical structure consisting of nodes (vertices) and edges (connections between nodes). In this project, we work with citation networks where papers are nodes and citations are edges.
+
+- **Node (Vertex)**: An entity in a graph. In the Cora dataset, each node represents a research paper with features describing its content.
+
+- **Edge**: A connection between two nodes. In citation networks, an edge from paper A to paper B means paper A cites paper B.
+
+- **Subgraph**: A smaller portion of a larger graph, containing a subset of nodes and the edges between them. This project focuses on analyzing subgraphs extracted from larger graphs.
+
+- **Triangle**: A set of three nodes where each node is connected to the other two, forming a closed loop (A-B-C-A). Triangles indicate strong local connectivity.
+
+- **Neighbors**: Nodes that are directly connected to a given node by an edge. The set of neighbors defines a node's immediate network.
+
+### Graph Neural Networks (GNNs)
+
+- **Graph Neural Network**: A type of neural network designed to work with graph-structured data. GNNs learn to create meaningful representations (embeddings) of nodes by considering both node features and graph structure.
+
+- **Node Embedding**: A low-dimensional vector representation of a node that captures its features and structural position in the graph. Similar nodes should have similar embeddings.
+
+- **Message Passing**: The core mechanism of GNNs where nodes exchange information with their neighbors. Each node aggregates messages from its neighbors to update its representation.
+
+- **Graph Convolutional Network (GCN)**: A specific type of GNN that applies convolution operations on graphs, similar to how CNNs work on images. The `GCNConv` layer in this project implements this.
+
+- **Pooling**: An operation that combines multiple node embeddings into a single graph-level or subgraph-level embedding. This project uses mean pooling (averaging node embeddings).
+
+### Learning Paradigms
+
+- **Transductive Learning**: A learning setting where the model has access to the entire graph (all nodes and edges) during training, even if some labels are missing. The model learns embeddings for all nodes at once, then makes predictions on specific subgraphs.
+
+- **Inductive Learning**: An alternative approach where the model learns to generalize to completely new, unseen graphs. This project uses transductive learning instead.
+
+### Sampling and Dataset Creation
+
+- **Random Walk**: A path through the graph where you start at a random node and repeatedly move to a random neighbor. This creates a connected sequence of nodes and is useful for exploring graph structure.
+
+- **Subgraph Sampling**: The process of extracting smaller subgraphs from a large graph for training. This project uses random walks to sample diverse connected subgraphs.
+
+- **Feature Vector**: A numerical representation of a node's properties. In the Cora dataset, each paper has a 1,433-dimensional feature vector representing word occurrences.
+
+### Training Concepts
+
+- **Loss Function**: A metric that measures how wrong the model's predictions are. This project uses Mean Squared Error (MSE) to compare predicted triangle counts to ground truth.
+
+- **Optimizer**: An algorithm that adjusts the model's parameters to minimize the loss. This project uses Adam, a popular adaptive learning rate optimizer.
+
+- **Epoch**: One complete pass through the entire training dataset. This project trains for 200 epochs.
+
+- **Batch**: A subset of training examples processed together. Using batches makes training more efficient and stable.
+
+### Why This Matters
+
+Graph learning is powerful because it can leverage both:
+1. **Node features** (what each paper is about)
+2. **Graph structure** (how papers are connected)
+
+This combination allows the model to understand not just individual nodes, but also their relationships and local neighborhoods, which is crucial for tasks like predicting triangle counts in subgraphs.
+
 ## Features
 
 - **Transductive GNN Architecture**: Computes node embeddings for the entire graph, then pools specific subgraph embeddings
